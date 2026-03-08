@@ -12,8 +12,9 @@ The assembled video includes:
 
 If something does not work, feel free to [contact me](https://github.com/C0D3D3V/bbb-dl/issues). 
 
-### Setup
-1. Install [Python](https://www.python.org/) >=3.7
+## Setup
+
+1. Install [Python](https://www.python.org/) >=3.10
 2. Install [ffmpeg](https://github.com/C0D3D3V/Moodle-Downloader-2/wiki/Installing-ffmpeg)
 3. Run: `pip install --user bbb-dl`
 4. Run `python -m playwright install chromium`
@@ -22,41 +23,38 @@ If something does not work, feel free to [contact me](https://github.com/C0D3D3V
 
 If you ever need to update `bbb-dl` run: `pip install -U bbb-dl`
 
-
 <details>
   <summary> For Experts: Click here for alternatively Setup using a virtual environment</summary>
 
-1. Install [Python](https://www.python.org/) >=3.7 and [git](https://git-scm.com/downloads)
-2. Install  `virtualenv`: `pip install virtualenv`
+1. Install [Python](https://www.python.org/) >=3.10 and [git](https://git-scm.com/downloads)
+2. Install  `uv`: [Installing uv](https://docs.astral.sh/uv/getting-started/installation/)
 3. Create a directory where you wish to install bbb-dl. Open a terminal in the desired directory
-4. Clone this repository into that folder: `git clone https://github.com/C0D3D3V/bbb-dl.git .`
-5. Run `virtualenv venv` to create the virtual environment (on Windows use `venv\Scripts\activate`)
+4. Clone this repository into that folder: `git clone https://github.com/alex27riva/bbb-dl.git .`
+5. Run `uv sync` to create the virtual environment (on Windows use `venv\Scripts\activate`)
 6. Run `source venv/bin/activate` to activate the virtual environment (on Windows use `venv\Scripts\activate`)
-7. Install `bbb-dl`: `pip install .`
-8. Install [ffmpeg](https://github.com/C0D3D3V/Moodle-Downloader-2/wiki/Installing-ffmpeg)
-9. Run `playwright install chromium`
-10. Run `bbb-dl --help` to see all options
+7. Install [ffmpeg](https://github.com/C0D3D3V/Moodle-Downloader-2/wiki/Installing-ffmpeg)
+8. Run `playwright install chromium`
+9. Run `bbb-dl --help` to see all options
 
 To deactivate the virtual environment run: `deactivate`
 </details>
 
-### Usage
+## Usage
 
-**Temporary files are default stored in the application data folder** 
+**Temporary files are default stored in the application data folder**
 
 - The `--backup` option uses the same location
 - You can change this location with the `--working-dir` option
 - On Windows, the folder is located in `%localappdata%\bbb-dl`
 - On Linux / MacOS, the folder is located in `~/.local/share/bbb-dl/`
-- If you used the `--keep-tmp-files` option and you run the program again with other `--skip-annotations` or `--skip-cursor` options, then you may want to remove the corresponding `frames` folder inside the temporary directory. Because frames are not overwritten. 
+- If you used the `--keep-tmp-files` option and you run the program again with other `--skip-annotations` or `--skip-cursor` options, then you may want to remove the corresponding `frames` folder inside the temporary directory. Because frames are not overwritten.
 - If ffmpeg has an error and a file has not been finished, it should be deleted from the temporary directory.
 
 Example call:
 
 `bbb-dl --skip-cursor https://your.bbb.org/playback/presentation/2.3/playback.html?meetingId=5d9100very_long_id70001800032c-160100033965`
 
-
-```
+```terminal
 usage: bbb-dl [-h] [-ao] [-sw] [-swfd] [-sa] [-sc] [-sz] [-bk] [-kt] [-v] [--ffmpeg-location FFMPEG_LOCATION] [-scv] [-ais] [-uac]
               [-ftv FORCE_TLS_VERSION] [--version] [--encoder ENCODER] [--audiocodec AUDIOCODEC] [--preset PRESET] [--crf CRF] [-f FILENAME]
               [-od OUTPUT_DIR] [-wd WORKING_DIR] [-mpc MAX_PARALLEL_CHROMES] [-fw FORCE_WIDTH] [-fh FORCE_HEIGHT]
@@ -114,12 +112,12 @@ options:
   -fh FORCE_HEIGHT, --force-height FORCE_HEIGHT
                         Force height on final output. (e.g. 720) This can reduce the time to generate the final video
 ```
- 
-### Batch processing
+
+## Batch processing
 
  If you want to do batch processing you can use `bbb-dl-batch`. All passed arguments will be passed to the respective `bbb-dl`. `bbb-dl-batch` itself only needs the path to a text file in which URLs to bbb sessions are specified line by line. See `bbb-dl-batch --help` for more information.
 
- Successfully downloaded URL sessions are added to `successful.txt` in the output folder. Session URLs that could not be successfully downloaded are added to `failed.txt` in the output folder. 
+ Successfully downloaded URL sessions are added to `successful.txt` in the output folder. Session URLs that could not be successfully downloaded are added to `failed.txt` in the output folder.
 
 ### The video quality is too low, how can I improve the output quality?
 
@@ -149,7 +147,6 @@ For example, if you have an **Nvidia** graphics card installed on a computer, yo
 
 > You have to test yourself if it is faster to use your hardware encoder or not. In some cases, hardware encoders are slower than using the CPU directly. 
 
-
 ### Other downloader
 
 [bbb-video-download](https://github.com/tilmanmoser/bbb-video-download)
@@ -163,5 +160,6 @@ For example, if you have an **Nvidia** graphics card installed on a computer, yo
 
 If someone wants to link another downloader here, which offers e.g. functions that bbb-dl does not offer, feel free to open an issue. 
 
-### License
+## License
+
 This project is licensed under the terms of the *MIT License*. For further information, please look [here](LICENSE).
